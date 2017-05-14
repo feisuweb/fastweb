@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head data-suburl="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/static/>
+  
+    <meta name="author" content="{{.Author}}" />
+    <meta name="description" content="{{.Description}}" />
+    <meta name="keywords" content="{{.Keywords}}">
+  
+  <meta name="referrer" content="no-referrer" />
+  <meta name="_csrf" content="{{.XsrfToken}}" />
+  <meta name="_suburl" content="" />
+  
+  
+  
+  
+    <meta property="og:url" content="https://try.wqdsoft.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{.PageTitle}}">
+    <meta property="og:description" content="{{.Description}}">
+    <meta property="og:image" content="https://try.wqdsoft.com/img/gogs-lg.png" />
+    <meta property="og:site_name" content="{{.SiteName}}">
+  
+
+  <link rel="shortcut icon" href="/static/img/favicon.png" />
+
+  <script src="/static/js/jquery-1.11.3.min.js"></script>
+  <script src="/static/js/libs/jquery.are-you-sure.js"></script>
+  <link rel="stylesheet" href="/static/assets/font-awesome-4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/assets/octicons-4.3.0/octicons.min.css">
+
+  
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/static/css/semantic-2.2.10.min.css">
+  <link rel="stylesheet" href="/static/css/apps.css?v=00b3b5307cb320c23f5b4ffd41687e49">
+
+  
+  <script src="/static/js/semantic-2.2.10.min.js"></script>
+  <script src="/static/js/apps.js?v=00b3b5307cb320c23f5b4ffd41687e49"></script>
+
+  <title>{{.Title}}</title>
+
+  <meta name="theme-color" content="#ff5343">
+
+  
+</head>
+<body>
+  <div class="full height">
+    <noscript>请启用浏览器javascript功能。</noscript>
+
+    
+      <div class="following bar light">
+        <div class="ui container">
+          <div class="ui grid">
+            <div class="column">
+              <div class="ui top secondary menu">
+                <a class="item brand" href="/static/">
+                  <img class="ui mini image" src="/static/img/favicon.png">
+                </a>
+
+                
+{{if .IsLogin}}
+                  
+{{else}}               
+<a class="item " href="/">首页</a>
+ {{end}}                
+
+                  <a class="item" href="/explore">探索</a>
+                  <a class="item" target="_blank" href="#" rel="noreferrer">帮助</a>
+
+              {{if .IsLogin}}
+                  <div class="right menu">
+                    <div class="ui dropdown head link jump item poping up" data-content="创建..." data-variation="tiny inverted">
+                      <span class="text">
+                        <i class="octicon octicon-plus"><span class="sr-only">创建...</span></i>
+                        <i class="octicon octicon-triangle-down"></i>
+                      </span>
+                      <div class="menu">
+                        <a class="item" href="/static/repo/create">
+                          <i class="octicon octicon-plus"></i> 创建新的仓库
+                        </a>
+                        <a class="item" href="/static/repo/migrate">
+                          <i class="octicon octicon-repo-clone"></i> 迁移外部仓库
+                        </a>
+                        
+                        <a class="item" href="/static/org/create">
+                          <i class="octicon octicon-organization"></i> 创建新的组织
+                        </a>
+                        
+                      </div>
+                    </div>
+
+                    <div class="ui dropdown head link jump item poping up" tabindex="-1" data-content="用户信息及更多" data-variation="tiny inverted">
+                      <span class="text avatar">
+                        <img class="ui small rounded image" src="https://secure.gravatar.com/avatar/d7fb364984d091becde7bf5cea3470cb">
+                        <span class="sr-only">用户信息及更多</span>
+                        <i class="octicon octicon-triangle-down" tabindex="-1"></i>
+                      </span>
+                      <div class="menu" tabindex="-1">
+                        <div class="ui header">
+                          已登录用户 <strong>{{.LoginMember.MemberName}} </strong>
+                        </div>
+
+                        <div class="divider"></div>
+                        <a class="item" href="/member/profile">
+                          <i class="octicon octicon-person"></i>
+                          个人信息
+                        </a>
+                        <a class=" item" href="/member/settings">
+                          <i class="octicon octicon-settings"></i>
+                          用户设置
+                        </a>
+                        <a class="item" target="_blank" href="#" rel="noreferrer">
+                          <i class="octicon octicon-question"></i>
+                          帮助
+                        </a>
+                        
+
+                        <div class="divider"></div>
+                        <a class="item" href="/member/logout">
+                          <i class="octicon octicon-sign-out"></i>
+                          退出
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+
+              {{else}}
+                  <div class="right menu">
+                    
+                      <a class="item" href="/register">
+                        <i class="octicon octicon-person"></i> 注册
+                      </a>
+                    
+                    <a class="item" href="/login">
+                      <i class="octicon octicon-sign-in"></i> 登录
+                    </a>
+
+                  </div>
+              {{end}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

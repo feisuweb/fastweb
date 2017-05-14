@@ -1,0 +1,87 @@
+<style type="text/css">
+
+.form-control { 
+display: block; 
+width: 200px; 
+height: 34px; 
+padding: 6px 12px; 
+font-size: 14px; 
+line-height: 1.428571429; 
+color: #555555; 
+vertical-align: middle; 
+background-color: #ffffff; 
+border: 1px solid #cccccc; 
+border-radius: 4px; 
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+} 
+.form-control:focus { 
+border-color: #66afe9; 
+outline: 0; 
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+} 
+
+.button-control { 
+display: block; 
+width: 200px; 
+height: 34px; 
+padding: 6px 12px; 
+font-size: 14px; 
+line-height: 1.428571429; 
+color: #fff; 
+vertical-align: middle; 
+background-color: red; 
+border: 1px solid #cccccc; 
+text-align: center;
+border-radius: 4px; 
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); 
+-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; 
+} 
+.button-control:focus { 
+border-color: #66afe9; 
+outline: 0; 
+-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6); 
+}
+</style>
+<h1>注册会员</h1>
+<form action="/register" method="POST">
+{{ .xsrfdata }}
+<table>
+	{{if .ErrorMsg }}
+	<tr >
+		<td style="padding: 10px;color: red;">错误:</td>
+		<td style="padding: 10px;color: red;" colspan="2">{{.ErrorMsg}}</td>
+	</tr>	
+	{{end}}
+	<tr >
+		<td style="padding: 10px">手机号:</td>
+		<td height="60px" style="padding: 10px"><input type="text" class="form-control" name="mobile" value="" /></td>
+		<td style="padding: 10px">手机号用于接收购买成功短信通知以及客户服务凭证。</td>
+	</tr>
+
+	<tr >
+		<td style="padding: 10px">邮箱:</td>
+		<td style="padding: 10px"><input type="text" class="form-control" name="email" value="" /></td>
+		<td style="padding: 10px">邮箱用于接收下载地址，解压密码等。</td>
+	</tr>
+	<tr >
+		<td style="padding: 10px">密码:</td>
+		<td style="padding: 10px"><input type="password" class="form-control" name="password" value="" /></td>
+		<td style="padding: 10px"></td>
+	</tr>	
+	<tr >
+		<td style="padding: 10px"></td>
+		<td style="padding: 10px"><input type="submit" name="submit"  class="button-control" value="注册"/></td>
+		<td style="padding: 10px"></td>
+	</tr>
+</table>
+
+</form>
+
+
