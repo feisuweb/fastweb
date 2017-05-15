@@ -1194,3 +1194,72 @@
 2017/05/16 01:36:49 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|     69.248µs|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2
 2017/05/16 01:36:49 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|      34.95µs|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.woff2
 2017/05/16 01:36:49 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    106.231µs|   match|[44m GET     [0m /static/css/themes/default/assets/fonts/icons.woff2
+2017/05/16 01:49:04 [I] [main.go:23] 服务已经启动... 
+2017/05/16 01:49:04 [I] [asm_amd64.s:2197] http server Running on http://:8080
+2017/05/16 01:49:11 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|  17.652842ms|   match|[44m GET     [0m /issues   r:/issues
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  41.634609ms|   match|[44m GET     [0m /static/js/libs/jquery.are-you-sure.js
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  14.611424ms|   match|[44m GET     [0m /static/js/semantic-2.2.10.min.js
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  21.695035ms|   match|[44m GET     [0m /static/js/jquery-1.11.3.min.js
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   16.50763ms|   match|[44m GET     [0m /static/js/apps.js
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   9.685656ms|   match|[44m GET     [0m /static/js/libs/emojify-1.1.0.min.js
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    2.50232ms|   match|[44m GET     [0m /static/js/libs/clipboard-1.5.9.min.js
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    226.078µs|   match|[44m GET     [0m /static/img/favicon.png
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  41.197893ms|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.min.css
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   4.634039ms|   match|[44m GET     [0m /static/img/avatar_default.png
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  85.666908ms|   match|[44m GET     [0m /static/css/semantic-2.2.10.min.css
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m| 107.754688ms|   match|[44m GET     [0m /static/css/apps.css
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m| 114.694381ms|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/css/font-awesome.min.css
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   1.039828ms|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.woff2
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   2.380106ms|   match|[44m GET     [0m /static/css/themes/default/assets/fonts/icons.woff2
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   4.127636ms|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2
+2017/05/16 01:49:12 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   4.090787ms|   match|[44m GET     [0m /explore   r:/explore
+2017/05/16 01:49:13 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   4.162089ms|   match|[44m GET     [0m /help   r:/help
+2017/05/16 01:49:14 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   4.145634ms| nomatch|[44m GET     [0m /explore/users
+2017/05/16 01:49:14 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   3.873471ms| nomatch|[44m GET     [0m /explore/／static/img/404.png
+2017/05/16 01:50:08 [I] [main.go:23] 服务已经启动... 
+2017/05/16 01:50:08 [I] [asm_amd64.s:2197] http server Running on http://:8080
+2017/05/16 01:50:09 [I] [main.go:23] 服务已经启动... 
+2017/05/16 01:50:09 [I] [asm_amd64.s:2197] http server Running on http://:8080
+2017/05/16 01:50:13 [I] [main.go:23] 服务已经启动... 
+2017/05/16 01:50:13 [I] [asm_amd64.s:2197] http server Running on http://:8080
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   2.645928ms| nomatch|[44m GET     [0m /explore/users
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  14.570816ms|   match|[44m GET     [0m /static/js/jquery-1.11.3.min.js
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   5.460165ms|   match|[44m GET     [0m /static/js/libs/jquery.are-you-sure.js
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|  10.250838ms|   match|[44m GET     [0m /static/img/404.png
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  15.360534ms|   match|[44m GET     [0m /static/css/apps.css
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  45.088238ms|   match|[44m GET     [0m /static/js/semantic-2.2.10.min.js
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  33.326122ms|   match|[44m GET     [0m /static/js/libs/emojify-1.1.0.min.js
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    3.09963ms|   match|[44m GET     [0m /static/js/libs/clipboard-1.5.9.min.js
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   1.460281ms|   match|[44m GET     [0m /static/img/favicon.png
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  62.545866ms|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.min.css
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   5.383102ms|   match|[44m GET     [0m /static/img/avatar_default.png
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m| 117.480239ms|   match|[44m GET     [0m /static/css/semantic-2.2.10.min.css
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m| 119.297411ms|   match|[44m GET     [0m /static/js/apps.js
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m| 141.676254ms|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/css/font-awesome.min.css
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   1.591613ms|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   1.526333ms|   match|[44m GET     [0m /static/css/themes/default/assets/fonts/icons.woff2
+2017/05/16 01:50:15 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   1.680878ms|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.woff2
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   2.750753ms| nomatch|[44m GET     [0m /explore/users
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   4.010676ms|   match|[44m GET     [0m /static/js/libs/jquery.are-you-sure.js
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   5.087408ms|   match|[44m GET     [0m /static/img/favicon.png
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   9.743106ms|   match|[44m GET     [0m /static/css/apps.css
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  18.779234ms|   match|[44m GET     [0m /static/js/jquery-1.11.3.min.js
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  47.314681ms|   match|[44m GET     [0m /static/css/semantic-2.2.10.min.css
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  39.532268ms|   match|[44m GET     [0m /static/js/libs/emojify-1.1.0.min.js
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   1.553712ms|   match|[44m GET     [0m /static/js/libs/clipboard-1.5.9.min.js
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    170.216µs|   match|[44m GET     [0m /static/img/404.png
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  12.630494ms|   match|[44m GET     [0m /static/img/avatar_default.png
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  62.765185ms|   match|[44m GET     [0m /static/js/semantic-2.2.10.min.js
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  79.747271ms|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/css/font-awesome.min.css
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  84.004582ms|   match|[44m GET     [0m /static/js/apps.js
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  84.471403ms|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.min.css
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    110.141µs|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|     35.103µs|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.woff2
+2017/05/16 01:50:50 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    124.433µs|   match|[44m GET     [0m /static/css/themes/default/assets/fonts/icons.woff2
+2017/05/16 01:50:54 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.219598ms|   match|[44m GET     [0m /     r:/
+2017/05/16 01:50:55 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.383082ms|   match|[44m GET     [0m /issues   r:/issues
+2017/05/16 01:50:57 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.846512ms|   match|[44m GET     [0m /issues   r:/issues
+2017/05/16 01:50:57 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.368962ms|   match|[44m GET     [0m /issues   r:/issues
+2017/05/16 01:50:58 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   1.973106ms|   match|[44m GET     [0m /help   r:/help
+2017/05/16 01:51:01 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.858785ms|   match|[44m GET     [0m /member/settings   r:/member/settings
+2017/05/16 01:51:02 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   3.383203ms| nomatch|[46m POST    [0m /user/settings
