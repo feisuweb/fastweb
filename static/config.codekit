@@ -106,24 +106,24 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 1
 		},
-	"\/img\/gogs-large-resize.png": {
+	"\/img\/fastweb-large-resize.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 78864,
-		"inputAbbreviatedPath": "\/img\/gogs-large-resize.png",
-		"outputAbbreviatedPath": "\/img\/gogs-large-resize.png",
+		"inputAbbreviatedPath": "\/img\/fastweb-large-resize.png",
+		"outputAbbreviatedPath": "\/img\/fastweb-large-resize.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 1
 		},
-	"\/img\/gogs-lg.png": {
+	"\/img\/fastweb-lg.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 97903,
-		"inputAbbreviatedPath": "\/img\/gogs-lg.png",
-		"outputAbbreviatedPath": "\/img\/gogs-lg.png",
+		"inputAbbreviatedPath": "\/img\/fastweb-lg.png",
+		"outputAbbreviatedPath": "\/img\/fastweb-lg.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 1
@@ -432,7 +432,7 @@
 		"strictMath": 0,
 		"strictUnits": 0
 		},
-	"\/less\/gogs.less": {
+	"\/less\/fastweb.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
 		"disableJavascript": 0,
@@ -440,8 +440,8 @@
 		"ieCompatibility": 1,
 		"ignore": 0,
 		"ignoreWasSetByUser": 1,
-		"inputAbbreviatedPath": "\/less\/gogs.less",
-		"outputAbbreviatedPath": "\/css\/gogs.css",
+		"inputAbbreviatedPath": "\/less\/fastweb.less",
+		"outputAbbreviatedPath": "\/css\/fastweb.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 0,
@@ -460,7 +460,7 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "Gogs",
+	"displayValue": "FastWeb",
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "brackets_brown"
 	},
