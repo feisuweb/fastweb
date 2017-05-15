@@ -9,6 +9,7 @@ import (
 
 func main() {
 	//创建附件目录
+	os.Mkdir("logs", os.ModePerm)
 	os.Mkdir("upload", os.ModePerm)
 	os.Mkdir("html", os.ModePerm)
 	os.Mkdir("upload/images", os.ModePerm)

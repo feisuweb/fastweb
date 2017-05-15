@@ -1,0 +1,31 @@
+<h4 class="ui top attached header">
+管理邮箱地址
+</h4>
+<div class="ui attached segment">
+<div class="ui email list">
+	<div class="item">
+		您的主要邮箱地址将被用于通知提醒和其它操作。
+	</div>
+	
+		<div class="item ui grid">
+			<div class="column">
+				<strong>358276571@qq.com</strong>
+				<span class="ui green tiny primary label">主要</span>
+				
+			</div>
+		</div>
+	
+</div>
+</div>
+<div class="ui attached bottom segment">
+<form class="ui form" action="/user/settings/email" method="post">
+	<input type="hidden" name="_csrf" value="yItDqhD3xVkRpjkTlF5J42F2yIY6MTQ5NDgyOTQ1Njc3Njc2MTAwNw==">
+	<div class="required field ">
+		<label for="email">添加新的邮箱地址</label>
+		<input id="email" name="email" type="email" autofocus required>
+	</div>
+	<button class="ui green button">
+		添加邮箱
+	</button>
+</form>
+</div>

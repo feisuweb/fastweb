@@ -1,0 +1,22 @@
+
+<div class="user activate">
+	<div class="ui middle very relaxed page grid">
+		<div class="column">
+			<form class="ui form" action="/member/activate" method="post">
+				 {{ .xsrfdata }}
+				<h2 class="ui top attached header">
+					激活您的帐户
+				</h2>
+				<div class="ui attached segment">
+										
+						
+							<p>一封新的确认邮件已经被发送至 <b>{{.LoginMember.Email}}</b>，请检查您的收件箱并在 3 小时内完成确认注册操作。</p>
+						
+					
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,93 @@
+{{template "header.html" .}}
+<div class="dashboard issues">
+	<div class="ui container">
+	<div class="ui floating dropdown link jump">
+		<span class="text">
+			<img class="ui avatar image" src="https://secure.gravatar.com/avatar/cdabe20a0da1bb59ef434c158394e875">
+			feisuweb
+			<i class="dropdown icon"></i>
+		</span>
+		<div class="context user overflow menu" tabindex="-1">
+			<div class="ui header">
+				切换控制面板用户
+			</div>
+			<div class="items">
+				<a class="active selected item" href="/issues">
+					<img class="ui avatar image" src="https://secure.gravatar.com/avatar/cdabe20a0da1bb59ef434c158394e875">
+					feisuweb
+				</a>
+				
+			</div>
+			<a class="item" href="/org/create">
+				<i class="octicon octicon-plus"></i>&nbsp;&nbsp;&nbsp;创建新的组织
+			</a>
+		</div>
+	</div>
+
+	
+</div>
+<div class="ui divider"></div>
+
+	<div class="ui container">
+		<div class="ui grid">
+			<div class="four wide column">
+				<div class="ui secondary vertical filter menu">
+					<a class=" item" href="/issues?type=your_repositories&repo=0&sort=&state=open">
+						属于该用户仓库的
+						<strong class="ui right">1</strong>
+					</a>
+					
+						<a class="ui basic blue button item" href="/issues?type=assigned&repo=0&sort=&state=open">
+							指派给您的
+							<strong class="ui right">1</strong>
+						</a>
+						<a class=" item" href="/issues?type=created_by&repo=0&sort=&state=open">
+							由您创建的
+							<strong class="ui right">1</strong>
+						</a>
+					
+					<div class="ui divider"></div>
+					
+				</div>
+			</div>
+			<div class="twelve wide column content">
+				<div class="ui tiny basic status buttons">
+					<a class="ui green active basic button" href="/issues?type=assigned&repo=0&sort=&state=open">
+						<i class="octicon octicon-issue-opened"></i>
+						1 个开启中
+					</a>
+					<a class="ui  basic button" href="/issues?type=assigned&repo=0&sort=&state=closed">
+						<i class="octicon octicon-issue-closed"></i>
+						0 个已关闭
+					</a>
+				</div>
+				<div class="ui right floated secondary filter menu">
+					
+					<div class="ui dropdown type jump item">
+						<span class="text">
+							排序
+							<i class="dropdown icon"></i>
+						</span>
+						<div class="menu">
+							<a class="active item" href="/issues?type=assigned&repo=0&sort=latest&state=open">最新创建</a>
+							<a class=" item" href="/issues?type=assigned&repo=0&sort=oldest&state=open">最早创建</a>
+							<a class=" item" href="/issues?type=assigned&repo=0&sort=recentupdate&state=open">最近更新</a>
+							<a class=" item" href="/issues?type=assigned&repo=0&sort=leastupdate&state=open">最少更新</a>
+							<a class=" item" href="/issues?type=assigned&repo=0&sort=mostcomment&state=open">最多评论</a>
+							<a class=" item" href="/issues?type=assigned&repo=0&sort=leastcomment&state=open">最少评论</a>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="issue list">
+					
+				{{.LayoutContent}}  		
+										
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{template "footer.html" .}}

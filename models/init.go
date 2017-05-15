@@ -22,6 +22,9 @@ func init() {
 	orm.RegisterModelWithPrefix("fastweb_", new(PayLog))
 	orm.RegisterModelWithPrefix("fastweb_", new(MemberSafeLog))
 
+	orm.RegisterModelWithPrefix("fastweb_", new(Issues))
+	orm.RegisterModelWithPrefix("fastweb_", new(IssuesLog))
+
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", mysqluser+":"+mysqlpass+"@tcp("+mysqlurls+")/"+mysqldb+"?charset=utf8&loc=Asia%2FShanghai")
 

@@ -1,0 +1,38 @@
+{{template "header.html" .}}
+<div class="user settings profile">
+	<div class="ui container">
+		<div class="ui grid">
+			<div class="four wide column">
+				<div class="ui vertical menu">
+					<div class="header item">帐户设置</div>
+					<a class="active item" href="/member/settings">
+						个人信息
+					</a>
+					<a class=" item" href="/member/settings/avatar">
+						头像设置
+					</a>
+					<a class=" item" href="/member/settings/password">
+						修改密码
+					</a>
+					<a class=" item" href="/member/settings/email">
+						邮箱地址
+					</a>
+					<a class=" item" href="/member/settings/security">
+						帐户安全
+					</a>
+					<a class=" item" href="/member/settings/organizations">
+						组织列表
+					</a>
+					<a class=" item" href="/member/settings/delete">
+						删除帐户
+					</a>
+				</div>
+			</div>
+
+			<div class="twelve wide column content">
+					{{.LayoutContent}}  
+			</div>
+		</div>
+	</div>
+</div>
+	{{template "footer.html" .}}

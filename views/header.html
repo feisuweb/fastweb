@@ -59,19 +59,20 @@
           <div class="ui grid">
             <div class="column">
               <div class="ui top secondary menu">
-                <a class="item brand" href="/static/">
+                <a class="item brand" href="/">
                   <img class="ui mini image" src="/static/img/favicon.png">
                 </a>
 
                 
-{{if .IsLogin}}
+              {{if .IsLogin}}
+                <a class="item {{if eq "/" .CurrentNavigation}}active{{end}}" href="/">控制面板</a>
+                <a class="item {{if eq "/issues" .CurrentNavigation}}active{{end}}" href="/issues">工单管理</a>              
+              {{else}}               
+                <a class="item {{if eq "/" .CurrentNavigation}}active{{end}}" href="/">首页</a>
+              {{end}}                
                   
-{{else}}               
-<a class="item " href="/">首页</a>
- {{end}}                
-
-                  <a class="item" href="/explore">探索</a>
-                  <a class="item" target="_blank" href="#" rel="noreferrer">帮助</a>
+                  <a class="item {{if eq "/explore" .CurrentNavigation}}active{{end}}" href="/explore">探索</a>
+                  <a class="item {{if eq "/help" .CurrentNavigation}}active{{end}}" href="/help" rel="noreferrer">帮助</a>
 
               {{if .IsLogin}}
                   <div class="right menu">
@@ -97,7 +98,7 @@
 
                     <div class="ui dropdown head link jump item poping up" tabindex="-1" data-content="用户信息及更多" data-variation="tiny inverted">
                       <span class="text avatar">
-                        <img class="ui small rounded image" src="https://secure.gravatar.com/avatar/d7fb364984d091becde7bf5cea3470cb">
+                        <img class="ui small rounded image" src="{{.LoginMember.Avatar}}">
                         <span class="sr-only">用户信息及更多</span>
                         <i class="octicon octicon-triangle-down" tabindex="-1"></i>
                       </span>
@@ -107,7 +108,7 @@
                         </div>
 
                         <div class="divider"></div>
-                        <a class="item" href="/member/profile">
+                        <a class="item" href="/member">
                           <i class="octicon octicon-person"></i>
                           个人信息
                         </a>
@@ -115,14 +116,14 @@
                           <i class="octicon octicon-settings"></i>
                           用户设置
                         </a>
-                        <a class="item" target="_blank" href="#" rel="noreferrer">
+                        <a class="item" href="/help" rel="noreferrer">
                           <i class="octicon octicon-question"></i>
                           帮助
                         </a>
                         
 
                         <div class="divider"></div>
-                        <a class="item" href="/member/logout">
+                        <a class="item" href="/logout">
                           <i class="octicon octicon-sign-out"></i>
                           退出
                         </a>

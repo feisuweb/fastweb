@@ -1,0 +1,111 @@
+<div class="dashboard feeds"> 
+ <div class="ui container"> 
+  <div class="ui floating dropdown link jump"> 
+   <span class="text"> <img class="ui avatar image" src="https://secure.gravatar.com/avatar/cdabe20a0da1bb59ef434c158394e875" /> feisuweb <i class="dropdown icon"></i> </span> 
+   <div class="context user overflow menu" tabindex="-1"> 
+    <div class="ui header">
+      切换控制面板用户 
+    </div> 
+    <div class="items"> 
+     <a class="active selected item" href="/"> <img class="ui avatar image" src="https://secure.gravatar.com/avatar/cdabe20a0da1bb59ef434c158394e875" /> feisuweb </a> 
+    </div> 
+    <a class="item" href="/org/create"> <i class="octicon octicon-plus"></i>&nbsp;&nbsp;&nbsp;创建新的组织 </a> 
+   </div> 
+  </div> 
+ </div> 
+ <div class="ui divider"></div> 
+ <div class="ui container"> 
+  <div class="ui grid"> 
+   <div class="ten wide column"> 
+    <div class="news"> 
+     <div class="ui left"> 
+      <img class="ui avatar image" src="https://secure.gravatar.com/avatar/cdabe20a0da1bb59ef434c158394e875" alt="" /> 
+     </div> 
+     <div class="ui grid"> 
+      <div class="ui fifteen wide column"> 
+       <div class=""> 
+        <p> <a href="/feisuweb">feisuweb</a> 创建了工单 <a href="/feisuweb/test/issues/1" rel="nofollow">feisuweb/test#1</a> </p> 
+        <span class="text truncate issue title has-emoji">工单测试</span> 
+        <p class="text italic light grey"><span class="time-since" title="Mon, 15 May 2017 07:26:04 UTC">2 小时之前</span></p> 
+       </div> 
+      </div> 
+      <div class="ui one wide column"> 
+       <i class="text grey mega-octicon octicon-issue-opened"></i> 
+      </div> 
+     </div> 
+     <div class="ui divider"></div> 
+    </div> 
+    <div class="news"> 
+     <div class="ui left"> 
+      <img class="ui avatar image" src="https://secure.gravatar.com/avatar/cdabe20a0da1bb59ef434c158394e875" alt="" /> 
+     </div> 
+     <div class="ui grid"> 
+      <div class="ui fifteen wide column"> 
+       <div class=""> 
+        <p> <a href="/feisuweb">feisuweb</a> 创建了仓库 <a href="/feisuweb/test" rel="nofollow">feisuweb/test</a> </p> 
+        <p class="text italic light grey"><span class="time-since" title="Mon, 15 May 2017 07:25:42 UTC">2 小时之前</span></p> 
+       </div> 
+      </div> 
+      <div class="ui one wide column"> 
+       <i class="text grey mega-octicon octicon-repo"></i> 
+      </div> 
+     </div> 
+     <div class="ui divider"></div> 
+    </div> 
+    <button class="ui fluid basic button center ajax-load-button" data-url="?after_id=40151">More</button> 
+   </div> 
+   <div class="six wide column"> 
+    <div class="ui three item tabable menu"> 
+     <a class="item active" data-tab="repos">仓库</a> 
+     <a class="item" data-tab="orgs">组织</a> 
+     <a class="item" data-tab="mirrors">镜像</a> 
+    </div> 
+    <div class="ui tab active list" data-tab="repos"> 
+     <div class="ui top attached header">
+       我的仓库 
+      <span class="ui grey label">1</span> 
+      <div class="ui right"> 
+       <a class="poping up" href="/repo/create" data-content="创建新的仓库" data-variation="tiny inverted" data-position="left center"> <i class="plus icon"></i> <span class="sr-only">创建新的仓库</span> </a> 
+      </div> 
+     </div> 
+     <div class="ui attached table segment"> 
+      <ul class="repo-owner-name-list"> 
+       <li> <a href="/feisuweb/test"> <i class="octicon octicon-repo"></i> <strong class="text truncate item-name">test</strong> <span class="ui right text light grey"> 0 <i class="octicon octicon-star rear"></i> </span> </a> </li> 
+      </ul> 
+     </div> 
+     <h4 class="ui top attached header"> 参与协作的仓库 </h4> 
+     <div class="ui attached table segment"> 
+      <ul id="collaborative-repo-list"> 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="ui tab list" data-tab="orgs"> 
+     <div class="ui top attached header">
+       我的组织 
+      <span class="ui grey label">0</span> 
+      <div class="ui right"> 
+       <a class="poping up" href="/org/create" data-content="创建新的组织" data-variation="tiny inverted" data-position="left center"> <i class="plus icon"></i> <span class="sr-only">创建新的组织</span> </a> 
+      </div> 
+     </div> 
+     <div class="ui attached table segment"> 
+      <ul class="repo-owner-name-list"> 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="ui tab list" data-tab="mirrors"> 
+     <div class="ui top attached header">
+       我的镜像 
+      <span class="ui grey label">0</span> 
+      <div class="ui right"> 
+       <a class="poping up" href="/repo/migrate?mirror=1" data-content="创建新的镜像" data-variation="tiny inverted" data-position="left center"> <i class="plus icon"></i> <span class="sr-only">创建新的镜像</span> </a> 
+      </div> 
+     </div> 
+     <div class="ui attached table segment"> 
+      <ul class="repo-owner-name-list"> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+ </div> 
+</div> 

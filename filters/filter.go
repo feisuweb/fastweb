@@ -16,8 +16,12 @@ func IsLogin(ctx *context.Context) (bool, models.Member) {
 }
 
 var FilterUser = func(ctx *context.Context) {
-	ok, _ := IsLogin(ctx)
+	ok, LoginMember := IsLogin(ctx)
 	if !ok {
 		ctx.Redirect(302, "/login")
+	}
+	//用户激活判断
+	if LoginMember.MemberActivated == 0 && ctx.Request.RequestURI != "/activate" && ctx.Request.RequestURI != "/active" {
+		ctx.Redirect(302, "/member/activate")
 	}
 }

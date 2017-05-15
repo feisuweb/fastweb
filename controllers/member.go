@@ -5,13 +5,10 @@ import (
 	"fmt"
 	"github.com/astaxie/beego"
 	//"strconv"
-	"github.com/feisuweb/fastweb/libs/notify"
-
-	"github.com/feisuweb/fastweb/filters"
+	"github.com/dchest/captcha"
 	"github.com/feisuweb/fastweb/models"
-	"html/template"
 	"strings"
-	"time"
+	//"time"
 )
 
 ///前台页面handle
@@ -22,29 +19,34 @@ type MemberHandle struct {
 //会员首页
 func (this *MemberHandle) Index() {
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
 	this.Data["PageTitle"] = "会员首页"
 	this.Layout = "layout/_member_layout.html"
 	this.TplName = "member/_index.html"
 }
 
-//会员登录
+//会员激活账号
+func (this *MemberHandle) Activate() {
+	this.Ctx.Output.Header("Cache-Control", "public")
+	this.Layout = "layout/_member_layout.html"
+	this.TplName = "member/_activate_resend.html"
+}
+
+//会员注册
 func (this *MemberHandle) GetRegister() {
 
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-	this.Data["xsrfdata"] = template.HTML(this.XSRFFormHTML())
+	captchaId := captcha.NewLen(6) //验证码长度为6
+	this.Data["CaptchaId"] = captchaId
 	this.Data["PageTitle"] = "注册会员"
-	this.Layout = "layout/_member_layout.html"
+	this.Layout = "layout/_site_layout.html"
+	this.TplName = "member/_register.html"
+}
+
+func (this *MemberHandle) ShowRegisterError(errorMsg string) {
+	captchaId := captcha.NewLen(6) //验证码长度为6
+	this.Data["CaptchaId"] = captchaId
+	this.Data["ErrorMsg"] = errorMsg
+	this.Layout = "layout/_site_layout.html"
 	this.TplName = "member/_register.html"
 }
 
@@ -60,36 +62,23 @@ func (this *MemberHandle) PostRegister() {
 	)
 
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
+	// id, value := this.GetString("captcha_id"), this.GetString("captcha")
+	// b := captcha.VerifyString(id, value) //验证码校验
+	// this.Ctx.WriteString(strconv.FormatBool(b))
 	mobile = strings.TrimSpace(this.GetString("mobile"))
 	email = strings.TrimSpace(this.GetString("email"))
 	password = strings.TrimSpace(this.GetString("password"))
 	this.Data["PageTitle"] = "会员登录"
 	if !models.ValidateMobile(mobile) {
-		this.Data["ErrorMsg"] = "手机号格式错误！"
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_register.html"
+		this.ShowRegisterError("手机号格式错误！")
 		return
 	}
 	if !models.ValidateEmail(email) {
-		this.Data["ErrorMsg"] = "请填写正确格式的邮箱！"
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_register.html"
+		this.ShowRegisterError("请填写正确格式的邮箱！")
 		return
 	}
 	if len(password) == 0 {
-		this.Data["ErrorMsg"] = "请填写密码！"
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_register.html"
+		this.ShowRegisterError("请填写密码！")
 		return
 	}
 	ip = this.Ctx.Request.Header.Get("X-Forwarded-For")
@@ -97,12 +86,7 @@ func (this *MemberHandle) PostRegister() {
 	err = minfo.FindMemberByMobileOrEmail(mobile, email)
 	if err {
 		//如果查询到用户已经存在，则提示用户已经存在了。
-		this.Data["ErrorMsg"] = "手机号或者邮箱已经注册过会员账号。"
-		this.TplName = "member/_register.html"
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_register.html"
+		this.ShowRegisterError("手机号或者邮箱已经注册过会员账号。")
 		return
 	}
 
@@ -118,40 +102,31 @@ func (this *MemberHandle) PostRegister() {
 	minfo.IsValidateEmail = 0
 	minfo.Points = 0
 	minfo.Money = 0
-	err = minfo.Register()
+	ret := minfo.Register()
 
-	if err {
-		this.Data["MemberName"] = minfo.MemberName
-		this.Data["MemberEmail"] = minfo.Email
-		this.Data["MemberMobile"] = minfo.Mobile
-		this.Data["MemberNickname"] = minfo.Nickname
-		this.Data["MemberId"] = minfo.Id
-
-		this.TplName = "member/_register_success.html"
+	if ret {
+		//注册成功，跳转到会员首页
+		this.Redirect("/member", 302)
+		return
 	} else {
-		this.Data["ErrorMsg"] = "账号注册失败！"
-		this.TplName = "member/_register.html"
+		this.ShowRegisterError("账号注册失败！")
+		return
 	}
-
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-	this.Layout = "layout/_member_layout.html"
-
+}
+func (this *MemberHandle) ShowLoginError(errorMsg string) {
+	captchaId := captcha.NewLen(6) //验证码长度为6
+	this.Data["CaptchaId"] = captchaId
+	this.Data["ErrorMsg"] = errorMsg
+	this.Data["PageTitle"] = "会员登录 - 登录错误"
+	this.Layout = "layout/_site_layout.html"
+	this.TplName = "member/_login.html"
 }
 
 //会员登录
 func (this *MemberHandle) GetLogin() {
-
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-	this.Data["xsrfdata"] = template.HTML(this.XSRFFormHTML())
-
 	this.Data["PageTitle"] = "会员登录"
-	this.Layout = "layout/_member_layout.html"
+	this.Layout = "layout/_site_layout.html"
 	this.TplName = "member/_login.html"
 }
 
@@ -169,19 +144,11 @@ func (this *MemberHandle) PostLogin() {
 	password = strings.TrimSpace(this.GetString("password"))
 	this.Data["PageTitle"] = "会员登录"
 	if len(memberName) == 0 {
-		this.Data["ErrorMsg"] = "请填写用户名！"
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_login.html"
+		this.ShowLoginError("请填写用户名！")
 		return
 	}
 	if len(password) == 0 {
-		this.Data["ErrorMsg"] = "请填写密码！"
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_login.html"
+		this.ShowLoginError("请填写密码！")
 		return
 	}
 
@@ -202,28 +169,14 @@ func (this *MemberHandle) PostLogin() {
 		return
 	} else {
 		//登录失败
-		this.Data["ErrorMsg"] = "账号或者密码错误"
+		this.ShowLoginError("账号或者密码错误")
+		return
 	}
-
-	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-	this.Layout = "layout/_member_layout.html"
-	this.TplName = "member/_login.html"
 }
 
 //会员退出登录
 func (this *MemberHandle) Logout() {
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-
 	this.SetSecureCookie(
 		beego.AppConfig.String("cookie.secure"),
 		beego.AppConfig.String("cookie.token"),
@@ -240,12 +193,6 @@ func (this *MemberHandle) FindPassword() {
 
 	this.Ctx.Output.Header("Cache-Control", "public")
 
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-	this.Data["xsrfdata"] = template.HTML(this.XSRFFormHTML())
-
 	this.Layout = "layout/_member_layout.html"
 
 	this.TplName = "member/_findpassword.html"
@@ -255,11 +202,6 @@ func (this *MemberHandle) FindPassword() {
 func (this *MemberHandle) Buy() {
 
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-
 	var (
 		memberInfo  models.Member
 		memberOrder models.MemberOrder
@@ -271,7 +213,6 @@ func (this *MemberHandle) Buy() {
 	this.Data["memberlist"] = memberList
 
 	this.Data["memberInfo"] = memberInfo
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
 
 	this.Layout = "layout/_member_layout.html"
 
@@ -283,9 +224,6 @@ func (this *MemberHandle) Upgrade() {
 
 	this.Ctx.Output.Header("Cache-Control", "public")
 
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
 	var (
 		memberInfo  models.Member
 		memberOrder models.MemberOrder
@@ -297,7 +235,6 @@ func (this *MemberHandle) Upgrade() {
 	this.Data["memberlist"] = memberList
 
 	this.Data["memberInfo"] = memberInfo
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
 
 	this.Layout = "layout/_member_layout.html"
 
@@ -476,10 +413,6 @@ func (this *MemberHandle) CreateVip() {
 	}
 	//页面cache控制
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
 	mid3 := fmt.Sprintf("%d", member_id)
 	this.Ctx.SetCookie("member_id", mid3)
 
@@ -513,8 +446,6 @@ func (this *MemberHandle) UpgradeVip() {
 		email          string
 		//ip             string
 	)
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-
 	member_id = LoginMember.Id
 	member_type_id, _ = this.GetInt64("vip_type")
 	mobile = LoginMember.Mobile
@@ -619,8 +550,6 @@ func (this *MemberHandle) UpgradeVip() {
 	//页面cache控制
 	this.Ctx.Output.Header("Cache-Control", "public")
 
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
 	this.Redirect(url, 302)
 	return
 }
@@ -635,9 +564,6 @@ func (this *MemberHandle) Check() {
 	//页面cache控制
 	this.Ctx.Output.Header("Cache-Control", "public")
 
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
 	order_no := strings.TrimSpace(this.GetString("orderno"))
 	if order_no == "" {
 		this.Abort("404")
@@ -673,11 +599,6 @@ func (this *MemberHandle) Profile() {
 	)
 	//页面cache控制
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-
 	token, _ := this.Ctx.GetSecureCookie(beego.AppConfig.String("cookie.secure"), beego.AppConfig.String("cookie.token"))
 	if IsLogin {
 
@@ -694,15 +615,12 @@ func (this *MemberHandle) Profile() {
 			}
 		}
 	} else {
-		this.Redirect("/login", 403)
+		this.Redirect("/login", 302)
 		return
 	}
 	this.Data["member_id"] = LoginMember.Id
 	this.Data["memberInfo"] = memberInfo
 	this.Data["is_vip"] = is_vip
-	this.Data["SiteRootUrl"] = site_www_url
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
 	this.Layout = "layout/_member_layout.html"
 	this.TplName = "member/_profile.html"
 }
@@ -711,101 +629,16 @@ func (this *MemberHandle) Profile() {
 func (this *MemberHandle) Recharge() {
 
 	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
 	var (
 		memberInfo  models.Member
 		memberOrder models.MemberOrder
 	)
 
 	memberList := memberOrder.GetLastList(6)
-
 	this.Data["PageTitle"] = "在线充值"
 	this.Data["memberlist"] = memberList
-
 	this.Data["memberInfo"] = memberInfo
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
 	this.Layout = "layout/_member_layout.html"
 
 	this.TplName = "member/_recharge.html"
-}
-
-//修改密码
-func (this *MemberHandle) GetChangePassword() {
-	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-	this.Data["PageTitle"] = "修改密码"
-	this.Layout = "layout/_member_layout.html"
-	this.TplName = "member/_change_password.html"
-}
-
-//修改密码-POST
-func (this *MemberHandle) PostChangePassword() {
-	this.Ctx.Output.Header("Cache-Control", "public")
-
-	IsLogin, LoginMember := filters.IsLogin(this.Controller.Ctx)
-	var (
-		minfo     *models.Member        = new(models.Member)
-		msloginfo *models.MemberSafeLog = new(models.MemberSafeLog)
-		err       bool
-		ip        string
-	)
-	ip = this.Ctx.Request.Header.Get("X-Forwarded-For")
-	oldPassword := strings.TrimSpace(this.GetString("oldpassword"))
-	newPassword := strings.TrimSpace(this.GetString("newpassword"))
-	err = minfo.ChangePassword(LoginMember.Id, oldPassword, newPassword)
-
-	if err {
-		msloginfo.AddSafeLog(LoginMember, "changepassword", ip, "密码修改成功！")
-		//发送密码修改通知给会员
-		t := time.Now().Format("2006-01-02 15:04:05")
-		var ni notify.NotifyInfo
-		ni.MemberName = LoginMember.MemberName
-		ni.MemberEmail = LoginMember.Email
-		ni.MemberMobile = LoginMember.Mobile
-		ni.MemberWeixinOpenId = LoginMember.WeixinOpenId
-		ni.ChangePasswordTime = t
-		ni.ChangePasswordIp = ip
-		ni.ChangePasswordNewPassword = newPassword
-
-		go notify.SendToMemberPasswordChangedNotify(&ni)
-
-		this.SetSecureCookie(
-			beego.AppConfig.String("cookie.secure"),
-			beego.AppConfig.String("cookie.token"),
-			"", -1,
-			"/",
-			beego.AppConfig.String("cookie.domain"),
-			false,
-			true)
-
-		this.Data["IsLogin"] = IsLogin
-		this.Data["LoginMember"] = LoginMember
-		this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-		this.Data["PageTitle"] = "修改密码成功！"
-		this.Layout = "layout/_member_layout.html"
-		this.TplName = "member/_change_password_success.html"
-		return
-	} else {
-
-		msloginfo.AddSafeLog(LoginMember, "changepassword", ip, "密码修改失败！")
-	}
-
-	this.Data["ErrorMsg"] = "修改密码失败！"
-	this.Data["IsLogin"] = IsLogin
-	this.Data["LoginMember"] = LoginMember
-	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
-
-	this.Data["PageTitle"] = "修改密码"
-	this.Layout = "layout/_member_layout.html"
-	this.TplName = "member/_change_password.html"
 }

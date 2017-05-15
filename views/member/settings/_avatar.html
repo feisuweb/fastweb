@@ -1,0 +1,38 @@
+
+<h4 class="ui top attached header">
+	头像设置
+</h4>
+<div class="ui attached segment">
+	<form class="ui form" action="/user/settings/avatar" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="_csrf" value="yItDqhD3xVkRpjkTlF5J42F2yIY6MTQ5NDgyOTQ1Njc3Njc2MTAwNw==">
+		
+		<div class="inline field">
+			<div class="ui radio checkbox">
+				<input name="source" value="lookup" type="radio" checked>
+				<label>通过邮箱地址获取头像</label>
+			</div>
+		</div>
+		<div class="inline box field ">
+			<label for="gravatar">Avatar 邮箱</label>
+			<input id="gravatar" name="gravatar" value="358276571@qq.com" />
+		</div>
+		
+
+		<div class="inline field">
+			<div class="ui radio checkbox">
+				<input name="source" value="local" type="radio" >
+				<label>启动自定义头像</label>
+			</div>
+		</div>
+
+		<div class="inline box field">
+			<label for="avatar">选择新的头像</label>
+			<input name="avatar" type="file" >
+		</div>
+
+		<div class="field">
+			<button class="ui green button">更新头像设置</button>
+			<a class="ui red button delete-post" data-request-url="/user/settings/avatar/delete" data-done-url="/user/settings/avatar">删除当前头像</a>
+		</div>
+	</form>
+</div>

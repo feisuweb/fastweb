@@ -41,6 +41,7 @@ type Member struct {
 	AgentId          int64     //代理商会员ID
 	Token            string    //token
 	AddTime          time.Time `orm:"auto_now_add;type(datetime)"`
+	MemberActivated  int64     `orm:"default(0);size(2)"` //1 激活 0 未激活
 	Status           int64     // 0  正常  -1 封号  1 限制登录
 }
 
@@ -96,6 +97,7 @@ func (m *Member) Register() bool {
 	m.PasswordSalt = salt
 	m.Password = pwd
 	m.Token = token
+	m.Avatar = "/static/img/avatar_default.png"
 	_, err := o.Insert(m)
 	return err != orm.ErrNoRows
 }

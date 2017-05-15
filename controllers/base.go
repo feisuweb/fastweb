@@ -3,9 +3,12 @@ package controllers
 import (
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/feisuweb/fastweb/filters"
 	"github.com/feisuweb/fastweb/models"
+	"html/template"
 )
 
+//全局变量
 var (
 	agent_id           int64  = 0
 	agent_mobile       string = ""
@@ -15,6 +18,8 @@ var (
 	login_member_type  string = "普通会员"
 	web_site_name             = ""
 	SiteSettings       map[string]string
+	LoginMember        models.Member
+	IsLogin            bool = false
 )
 
 var (
@@ -74,6 +79,15 @@ type baseController struct {
 }
 
 func (this *baseController) Prepare() {
+	//判断登录状态
+	IsLogin, LoginMember = filters.IsLogin(this.Controller.Ctx)
+	this.Data["XsrfToken"] = this.XSRFToken()
+	this.Data["xsrfdata"] = template.HTML(this.XSRFFormHTML())
+	this.Data["IsLogin"] = IsLogin
+	this.Data["LoginMember"] = LoginMember
+	this.Data["CurrentUrl"] = this.Ctx.Request.RequestURI
+	this.Data["SiteRootUrl"] = site_www_url
+	this.Data["CurrentNavigation"] = this.Ctx.Request.RequestURI
 
 }
 

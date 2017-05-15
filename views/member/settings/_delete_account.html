@@ -1,0 +1,19 @@
+<h4 class="ui top attached warning header">
+	删除当前帐户
+</h4>
+<div class="ui attached warning segment">
+	<div class="ui red message">
+		<p class="text left"><i class="octicon octicon-alert"></i> 删除操作会永久清除您的帐户信息，并且 <strong>不可恢复</strong>！</p>
+	</div>
+	<form class="ui form" id="delete-form" action="/user/settings/delete" method="post">
+		<input type="hidden" name="_csrf" value="yItDqhD3xVkRpjkTlF5J42F2yIY6MTQ5NDgyOTQ1Njc3Njc2MTAwNw==">
+		<input class="fake" type="password">
+		<div class="required field ">
+			<label for="password">密码</label>
+			<input id="password" name="password" type="password" autofocus required>
+		</div>
+		<div class="ui red button delete-button" data-type="form" data-form="#delete-form">
+			确认删除帐户
+		</div>
+	</form>
+</div>

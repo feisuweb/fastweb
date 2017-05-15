@@ -1,0 +1,34 @@
+<h4 class="ui top attached header">
+	公开信息
+</h4>
+<div class="ui attached segment">
+	<p>您的邮箱地址将会被公开，并被用于接收帐户的所有提醒和通知。</p>
+	<form class="ui form" action="/user/settings" method="post">
+		<input type="hidden" name="_csrf" value="yItDqhD3xVkRpjkTlF5J42F2yIY6MTQ5NDgyOTQ1Njc3Njc2MTAwNw==">
+		<div class="required field ">
+			<label for="username">用户名<span class="text red hide" id="name-change-prompt"> 该操作将会影响到所有与您帐户有关的链接</span></label>
+			<input id="username" name="name" value="feisuweb" data-name="feisuweb" autofocus required >
+			
+		</div>
+		<div class="field ">
+			<label for="full_name">自定义名称</label>
+			<input id="full_name" name="full_name" value="">
+		</div>
+		<div class="required field ">
+			<label for="email">邮箱</label>
+			<input id="email" name="email" value="358276571@qq.com" required>
+		</div>
+		<div class="field ">
+			<label for="website">个人网站</label>
+			<input id="website" name="website" type="url" value="">
+		</div>
+		<div class="field">
+			<label for="location">所在地区</label>
+			<input id="location" name="location"  value="">
+		</div>
+
+		<div class="field">
+			<button class="ui green button">更新信息</button>
+		</div>
+	</form>
+</div>
