@@ -8,10 +8,11 @@
           注册
         </h3>
         <div class="ui attached segment">
-	{{if .ErrorMsg }}
-	错误:{{.ErrorMsg}}
-	{{end}}
 
+    <div class="ui negative message">
+    <p>{{if .ErrorMsg }}{{.ErrorMsg}}{{end}}</p>
+    </div>      
+	
             <div class="required inline field ">
               <label for="user_name">手机号</label>
               <input id="user_name" name="mobile" value="" autofocus required>

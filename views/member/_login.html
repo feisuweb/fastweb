@@ -9,9 +9,9 @@
         </h3>
         <div class="ui attached segment">
           
-{{if .ErrorMsg }}
-	错误:{{.ErrorMsg}}	
-{{end}}
+    <div class="ui negative message">
+    <p>{{if .ErrorMsg }}{{.ErrorMsg}}{{end}}</p>
+    </div>      
 
 
 

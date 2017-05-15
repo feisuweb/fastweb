@@ -1263,3 +1263,33 @@
 2017/05/16 01:50:58 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   1.973106ms|   match|[44m GET     [0m /help   r:/help
 2017/05/16 01:51:01 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.858785ms|   match|[44m GET     [0m /member/settings   r:/member/settings
 2017/05/16 01:51:02 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   3.383203ms| nomatch|[46m POST    [0m /user/settings
+2017/05/16 01:53:00 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.980549ms|   match|[44m GET     [0m /issues   r:/issues
+2017/05/16 01:53:01 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   4.652074ms|   match|[44m GET     [0m /     r:/
+2017/05/16 01:53:02 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|    2.12671ms|   match|[44m GET     [0m /     r:/
+2017/05/16 01:53:06 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.066564ms|   match|[44m GET     [0m /explore   r:/explore
+2017/05/16 01:53:07 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.679189ms|   match|[44m GET     [0m /help   r:/help
+2017/05/16 01:53:10 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.575705ms|   match|[44m GET     [0m /member   r:/member/
+2017/05/16 01:53:11 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   2.454754ms| nomatch|[44m GET     [0m /feisuweb
+2017/05/16 01:53:13 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.510132ms|   match|[44m GET     [0m /member   r:/member/
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.465416ms|   match|[44m GET     [0m /member   r:/member/
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  12.282326ms|   match|[44m GET     [0m /static/js/jquery-1.11.3.min.js
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   4.665007ms|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/css/font-awesome.min.css
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   5.216348ms|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.min.css
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   6.725363ms|   match|[44m GET     [0m /static/js/libs/jquery.are-you-sure.js
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   2.290208ms|   match|[44m GET     [0m /static/js/libs/emojify-1.1.0.min.js
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|   2.371467ms|   match|[44m GET     [0m /static/js/libs/clipboard-1.5.9.min.js
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|    679.141µs|   match|[44m GET     [0m /static/img/favicon.png
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  23.499084ms|   match|[44m GET     [0m /static/js/semantic-2.2.10.min.js
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  13.342835ms|   match|[44m GET     [0m /static/img/avatar_default.png
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  26.932151ms|   match|[44m GET     [0m /static/js/apps.js
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  65.985226ms|   match|[44m GET     [0m /static/css/semantic-2.2.10.min.css
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|  71.996885ms|   match|[44m GET     [0m /static/css/apps.css
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|     60.269µs|   match|[44m GET     [0m /static/assets/octicons-4.3.0/octicons.woff2
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|     28.878µs|   match|[44m GET     [0m /static/css/themes/default/assets/fonts/icons.woff2
+2017/05/16 01:53:36 [D] [server.go:2568] |      127.0.0.1|[47m 304 [0m|     30.516µs|   match|[44m GET     [0m /static/assets/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2
+2017/05/16 01:53:40 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.994513ms|   match|[44m GET     [0m /member   r:/member/
+2017/05/16 01:53:44 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   4.305488ms|   match|[44m GET     [0m /member   r:/member/
+2017/05/16 01:53:46 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   2.869333ms|   match|[44m GET     [0m /member   r:/member/
+2017/05/16 01:55:00 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.260792ms|   match|[44m GET     [0m /member/settings   r:/member/settings
+2017/05/16 01:55:05 [D] [server.go:2568] |      127.0.0.1|[43m 404 [0m|   2.358628ms| nomatch|[46m POST    [0m /user/settings
+2017/05/16 01:55:22 [D] [server.go:2568] |      127.0.0.1|[42m 200 [0m|   3.587092ms|   match|[44m GET     [0m /member/settings   r:/member/settings
