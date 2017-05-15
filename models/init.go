@@ -1,19 +1,49 @@
 package models
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	_ "github.com/go-sql-driver/mysql"
-
 	"github.com/feisuweb/fastweb/libs/notify"
+	"github.com/feisuweb/fastweb/libs/utils"
+	_ "github.com/go-sql-driver/mysql"
+	"path/filepath"
 	"time"
 )
 
 func init() {
-	mysqluser := beego.AppConfig.String("mysqluser")
-	mysqlpass := beego.AppConfig.String("mysqlpass")
-	mysqlurls := beego.AppConfig.String("mysqlurls")
-	mysqldb := beego.AppConfig.String("mysqldb")
+	//读取配置文件
+	configPath := filepath.Join("conf", "database.conf")
+	fmt.Println("Config path:" + configPath)
+	red, err := utils.GetConfig(configPath)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	//读取mysql 配置
+	mysqlpass := red.Conf["mysql.password"]
+	mysqluser := red.Conf["mysql.user"]
+	mysqldb := red.Conf["mysql.database"]
+	mysqlhost := red.Conf["mysql.host"]
+	mysqlport := red.Conf["mysql.port"]
+	//密码长度，判断是否已经加密过
+	if len(mysqlpass) == 24 {
+		mysqlpass, err = utils.Decrypt(mysqlpass)
+		if err != nil {
+			fmt.Errorf("Decrypt mysql passwd failed.")
+			return
+		}
+	}
+	//没有加密密码，则加密一次密码，并写入配置文件
+	if len(mysqlpass) != 24 {
+		psd, err := utils.Encrypt(mysqlpass)
+		if err != nil {
+			fmt.Errorf("decrypt passwd failed.%v", psd)
+			return
+		}
+		psd = "\"" + psd + "\""
+		red.Set("mysql.password", psd)
+	}
 
 	orm.RegisterModelWithPrefix("fastweb_", new(Member))
 	orm.RegisterModelWithPrefix("fastweb_", new(MemberOrder))
@@ -26,7 +56,7 @@ func init() {
 	orm.RegisterModelWithPrefix("fastweb_", new(IssuesLog))
 
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("default", "mysql", mysqluser+":"+mysqlpass+"@tcp("+mysqlurls+")/"+mysqldb+"?charset=utf8&loc=Asia%2FShanghai")
+	orm.RegisterDataBase("default", "mysql", mysqluser+":"+mysqlpass+"@tcp("+mysqlhost+":"+mysqlport+")/"+mysqldb+"?charset=utf8&loc=Asia%2FShanghai")
 
 	name := "default" //数据库别名
 	force := false    //不强制建数据库
