@@ -8,11 +8,11 @@
           登录
         </h3>
         <div class="ui attached segment">
-          
+          {{if .ErrorMsg }}
     <div class="ui negative message">
-    <p>{{if .ErrorMsg }}{{.ErrorMsg}}{{end}}</p>
+    <p>{{.ErrorMsg}}</p>
     </div>      
-
+{{end}}
 
 
           <div class="required inline field ">

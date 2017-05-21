@@ -14,7 +14,7 @@ func (this *MainController) Get() {
 		this.TplName = "index.html"
 
 	}
-	this.Data["SiteName"] = "微信采集服务"
+	this.Data["SiteName"] = "飞速微信采集"
 	this.Data["Keywords"] = "astaxie@gmail.com"
 	this.Data["Description"] = "astaxie@gmail.com"
 	this.Data["Author"] = "astaxie@gmail.com"
@@ -23,7 +23,7 @@ func (this *MainController) Get() {
 
 func (this *MainController) Explore() {
 
-	this.Data["SiteName"] = "微信采集服务"
+	this.Data["SiteName"] = "飞速微信采集"
 	this.Data["PageTitle"] = "浏览"
 	this.Data["Keywords"] = "astaxie@gmail.com"
 	this.Data["Description"] = "astaxie@gmail.com"

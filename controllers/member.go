@@ -62,9 +62,12 @@ func (this *MemberHandle) PostRegister() {
 	)
 
 	this.Ctx.Output.Header("Cache-Control", "public")
-	// id, value := this.GetString("captcha_id"), this.GetString("captcha")
-	// b := captcha.VerifyString(id, value) //验证码校验
-	// this.Ctx.WriteString(strconv.FormatBool(b))
+	id, value := this.GetString("captcha_id"), this.GetString("captcha")
+	b := captcha.VerifyString(id, value) //验证码校验
+	if !b {
+		this.ShowRegisterError("验证码错误！")
+		return
+	}
 	mobile = strings.TrimSpace(this.GetString("mobile"))
 	email = strings.TrimSpace(this.GetString("email"))
 	password = strings.TrimSpace(this.GetString("password"))
